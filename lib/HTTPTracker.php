@@ -46,7 +46,11 @@
 			$total = $retd['seeders'] + $retd['leechers'];
 			for ($i=0; $i<strlen($ret); $i+=6) {
 				$peerd = unpack("Nip/nport", substr($ret, $i));
-				$peers[] = array("ip" => long2ip($peerd["ip"]), "port" => intval($peerd["port"]));
+				$peerIp = long2ip($peerd["ip"]);
+				$peerPort = intval($peerd["port"]);
+				if ($this->isValidPeer($peerIp, $peerPort)) {
+					$peers[] = array("ip" => $peerIp, "port" => $peerPort);
+				}
 			}
 			return array(
 					"count" => count($peers),
