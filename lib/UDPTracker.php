@@ -37,7 +37,8 @@
 
 			// Connection response
 			$ret = fread($fp, 16);
-			if(strlen($ret) < 1){ throw new Exception('No connection response.',0,true); }
+
+			if(strlen($ret) < 1){ throw new Exception('No connection response.'); }
 			if(strlen($ret) < 16){ throw new Exception('Too short connection response.'); }
 			$retd = unpack("Naction/Ntransid",$ret);
 			if($retd['action'] != 0 || $retd['transid'] != $transaction_id){
@@ -64,6 +65,9 @@
 			fwrite($fp,$packet);
 
 			$ret = fread($fp, 4096);
+
+			if(strlen($ret) < 1){ throw new Exception('No announce response.'); }
+
 			$retd = unpack("Naction/Ntransid/Ninterval/Nseeders/Nleechers",$ret);
 			
 			if($retd['action'] != 1 || $retd['transid'] != $transaction_id) {

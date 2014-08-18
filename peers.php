@@ -1,4 +1,7 @@
 <?php
+
+    error_reporting(1);
+    
 	require_once(dirname(__FILE__) . '/lib/UDPTracker.php');
 	require_once(dirname(__FILE__) . '/lib/HTTPTracker.php');
 
