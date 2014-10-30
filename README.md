@@ -5,7 +5,9 @@ __GET__ ```/peers.php?tracker=[TRACKER_URL]&hash=[INFO_HASH]```
 
 ## Response
 
-__SUCCESS__ ```{
+__SUCCESS__
+```json
+{
   "error":false,
   "data":{
     "count":2,
@@ -20,7 +22,10 @@ __SUCCESS__ ```{
       }
     ]
   }
-}```
+}
+```
 
 __FAILURE__
-```{ "error":true, "message":"No connection response." }```
+```json
+{ "error":true, "message":"No connection response." }
+```
